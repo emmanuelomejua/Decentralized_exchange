@@ -8,7 +8,7 @@ describe("Token", () => {
     let addr1: any;
     let addr2: any;
 
-    beforeEach(async () => {
+    before(async () => {
         [owner, addr1, addr2] = await ethers.getSigners();
         const Token = await ethers.getContractFactory("Token");
         token = await Token.deploy(tokenSupply);
@@ -21,6 +21,16 @@ describe("Token", () => {
         })
     })
 
-    describe("Deployment", () => {})
+    describe("Transaction", () => {
+        it("Should transfer token between accounts", async () => {
+            await token.transfer(addr1.address, 50);
+            const addr1Balance = await token.balanceOf(addr1.address);
+            expect(addr1Balance).to.equal(50);
+        })
 
+        it("Should transfer token between accounts", async () => {
+            await expect(token.connect(addr1).transfer(addr2.address, 51)).to.be.reverted;
+        })
+    })
+        
 })

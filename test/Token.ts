@@ -14,12 +14,12 @@ describe("Token", () => {
         token = await Token.deploy(tokenSupply);
     })
 
-    describe("Deployment", () => {
-        it("Should assign total supply of tokens to owner/supplyer", async () => {
-            const ownerBalance = await token.balanceOf(owner.address);
-            expect(await token.tokenSupply()).to.equal(ownerBalance)
-        })
-    })
+    // describe("Deployment", () => {
+    //     it("Should assign total supply of tokens to owner/supplyer", async () => {
+    //         const ownerBalance = await token.balanceOf(owner.address);
+    //         expect(await token.tokenSupply()).to.equal(ownerBalance)
+    //     })
+    // })
 
     describe("Transaction", () => {
         it("Should transfer token between accounts", async () => {

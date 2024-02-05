@@ -1,7 +1,8 @@
 import { expect } from "chai";
 import { ethers } from "hardhat"; 
 
-describe("Dex", () => {
+
+describe("DEX", () => {
     let tokenSupply = "100";
     let token: any;
     let dex: any;
@@ -17,9 +18,9 @@ describe("Dex", () => {
         const Token = await ethers.getContractFactory("Token");
         token = await Token.deploy(tokenSupply);
 
-        const Dex = await ethers.getContractFactory("Dex"); 
+        const DEX = await ethers.getContractFactory("DEX"); 
 
-        dex = await Dex.deploy(token.address, price)
+        dex = await DEX.deploy(token.address, price)
     })
 
 
